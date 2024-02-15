@@ -2,10 +2,7 @@ from flask import Flask, render_template, request, jsonify
 from custom import bg
 import os
 import subprocess
-import webbrowser
 import requests
-from io import BytesIO
-import base64
 import signal
 import sys
 
@@ -37,41 +34,6 @@ def printImage():
     except Exception as e:
         return str(e)
 
-""" 
-Create Images with OpenAI
-@app.route('/generate_ai', methods=['GET'])
-def generate_image():
-    try:
-        # Importiere die Module nur, wenn die Funktion aufgerufen wird
-        from openai import OpenAI
-
-        # Replace YOUR_API_KEY with your OpenAI API key
-        openai_client = OpenAI(api_key="sk-yourapikey")
-
-        prompt_text = request.args.get('prompt', 'default_prompt')
-
-        # Call the OpenAI API for image generation
-        response = openai_client.images.generate(
-            model="dall-e-3",
-            prompt=prompt_text,
-            size="1024x1024",
-            quality="standard",
-            n=1,
-        )
-
-        # Get the URL of the generated image
-        image_url = response.data[0].url
-
-        # Lade das Bild herunter und speichere es lokal
-        image_response = requests.get(image_url)
-        image_data = base64.b64encode(image_response.content).decode('utf-8')
-
-        # Return the image URL and the base64-encoded image data
-        return jsonify({"image_data": image_data})
-
-    except Exception as e:
-        return jsonify({"error": str(e)}), 500
-"""
 @app.route('/generate_ai', methods=['GET'])
 def generate_image():
     try:
@@ -123,18 +85,48 @@ def generate_image():
             image_data_list.append(image_data)
 
         return jsonify({"image_data_list": image_data_list})
+    
+        '''
+        Mit der OpenAI-API
+        from openai import OpenAI
+
+        # Ersetze YOUR_API_KEY mit deinem OpenAI-API-Schlüssel
+        openai_client = OpenAI(api_key="sk-yourapikey")
+
+        prompt_text = request.args.get('prompt', 'default_prompt')
+
+        response = openai_client.images.generate(
+            model="dall-e-3",
+            prompt=prompt_text,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+
+        image_url = response.data[0].url
+
+        # Lade das Bild herunter und speichere es lokal
+        image_response = requests.get(image_url)
+        image_data = base64.b64encode(image_response.content).decode('utf-8')
+
+        # Return the image URL and the base64-encoded image data
+        return jsonify({"image_data": image_data})
+        '''
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+# IP-Adresse des Clients, der die Anfrage senden kann
+ALLOWED_IP = "127.0.0.1"    
 
 @app.route('/shutdownServer', methods=['POST'])
 def shutdownServer():
-    print('Shutting down server...')
-    os.kill(os.getpid(), signal.SIGINT)
-    return 'Server shutting down...'
-
-# IP-Adresse des Clients, der die Anfrage senden kann
-ALLOWED_IP = "127.0.0.1"
+    if request.remote_addr == ALLOWED_IP:
+        print('Shutting down server...')
+        os.kill(os.getpid(), signal.SIGINT)
+        return 'Server shutting down...'
+    else:
+        return 'Access denied'
 
 @app.route('/rebootServer', methods=['POST'])
 def restartServer():
@@ -148,7 +140,7 @@ def restartServer():
 @app.route('/reboot', methods=['POST'])
 def reboot():
     if request.remote_addr == ALLOWED_IP:
-        print('Restarting ...')
+        print('Restarting PlOtter...')
         subprocess.run(['sudo', 'reboot'])
         return 'Rebooting PlOtter...'
     else:
@@ -165,5 +157,3 @@ def shutdown():
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0', port=80)
-
-

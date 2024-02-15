@@ -5,3 +5,4 @@ readchar==4.0.3
 tqdm==4.64.1
 pytest==7.0.1
 tk==0.1.0
+flask

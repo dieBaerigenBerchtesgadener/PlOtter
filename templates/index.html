@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PlOtter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+	<div class="container">
+	<h1>PlOtter</h1>
+	<!--<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 10%; height: 10%; margin-left: 10px;"> -->
+	</div>
+	<form id="upload-form" method="post" enctype="multipart/form-data">		
+		<svg id="svg" style="display: none;"></svg>
+		<img id="image-preview" onclick="selectImage()" src="{{ url_for('static', filename='images/otter.gif') }}" alt="Bildvorschau">
+		<div class="wrapper">
+			<canvas id="canvas" width="500" height="300"></canvas>
+			<div id="zoom-container" class="container" style="display: none;">
+				<button id="zoom-in" class="button-zoom">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="button-zoom-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/zoom-in.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+				<button id="zoom-out" class="button-zoom">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="button-zoom-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/zoom-out.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="input-container" id="input-container-ai" style="display: none;">
+			<input id="input-ai" type="text" name="text" class="input" placeholder="Stell dir etwas vor..." onkeydown="handleKeyPress(event)">
+			<span class="icon"> 
+				<svg onclick="generateAi()" width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+					<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+					<g id="SVGRepo_iconCarrier">
+						<image href="{{ url_for('static', filename='images/send-rounded-outlined.svg') }}" width="100%" height="100%" />
+					</g>
+				</svg>
+			</span>			
+		</div>
+		<br>
+		<div class="button-container">
+			<button type="button" onclick='selectImage()' class="button-54" id="upload-button" role="button">Bild hochladen</button>
+			<button type="button" onclick='selectAi()' class="button-54" id="camera-button" role="button">KI-Bild</button>
+		</div>
+		<br></br>
+		<div class="container">
+			<div style="font-weight: bold; font-size: 17px; bottom: 5px; position: relative;" class="text">Modifikation</div>
+		</div>
+		<div class="container" style="margin-top: -10px;">
+			<div id="konturen-container" class="container">
+				<label for="konturen-range" style="width: 96px;">Konturen:</label>
+				<input type="range" min="1" max="16" value="8" class="slider" id="konturen-range">
+				<span id="konturen-display" style="width: 14px;">8</span> <br> <br>
+			</div>
+			<label id="checkboxKonturenContainer" class="container">
+				<input id="checkboxKonturen" checked="checked" type="checkbox">
+				<div class="checkmark" style="margin-left: 10px;"></div> 
+			</label>
+		</div>
+		<div class="container">
+			<br>
+			<div id="schraffur-container" class="container">
+				<label for="schraffur-range" style="width: 96px;">Schraffur:</label>
+				<input type="range" min="1" max="24" value="8" class="slider" id="schraffur-range">
+				<span id="schraffur-display" style="width: 14px;">8</span> 
+				<label id="checkboxSchraffurContainer" class="container">
+					<input id="checkboxSchraffur" checked="checked" type="checkbox">
+					<div class="checkmark" style="margin-left: 10px;"></div>
+				</label>
+			</div>
+		</div>
+		<div class="container">
+			<div id="noise-container" class="container">
+				<label for="noise-range" style="width: 96px;">Rauschen:</label>
+				<input type="range" min="0" max="2" step="0.1" value="1" class="slider" id="noise-range">
+				<span id="noise-display">1</span><br><br>
+			</div>
+		</div>
+		<br>
+		<div style="display: flex;">
+			<button type="button" onclick="convert()" class="button-54" id="convert-button" role="button" style="display: none; margin-right: 10px;">Umwandeln</button>
+			<button type="button" onclick="resetCanvas()" class="button-54" id="reset-button" role="button" style="display: none;">Zurücksetzen</button>
+		</div>
+		<br><br><br>
+		<div class="container" id="containerButton">
+		<button class="centered-button" onclick=printImage() style="display: none;" id="print-button"><span>Drucken</span></button>
+		</div>
+		<input type="file" name="file" id="file">
+		<div class="container" id="dev-container" style="display: none;">
+			<div class="container">
+				<div style="font-weight: bold; font-size: 17px; bottom: 5px; position: relative;" class="text">Dev-Settings</div>
+			</div>
+			<div>
+				<div class="flex-container">
+					<label>Log:</label>
+					<style>
+						.white-text {
+							color: white;
+							background-color: black;
+						}
+						.flex-container {
+							display: flex;
+							align-items: center;
+						}
+					</style>
+					<div id="msgbox" class="white-text"></div>
+				</div>
+			</div><br>
+			<label>Server</label><br>
+			<div class="button-container">
+				<button onclick="shutdownServer()" class="button-54" id="shutdownServer-button" role="button">Herunterfahren</button>
+				<button onclick="rebootServer()" class="button-54" id="rebootServer-button" role="button">Neustarten</button>
+			</div><br>
+			<label>PlOtter</label><br>
+			<div class="button-container">
+				<button onclick="shutdown()" class="button-54" id="shutdown-button" role="button" style="background-color: lightcoral;">Herunterfahren</button>
+				<button onclick="reboot()" class="button-54" id="reboot-button" role="button" style="background-color: lightcoral;">Neustarten</button>
+			</div><br><br>
+			<button onclick="download()" class="button-54" id="download-button" role="button">Download Json</button>
+			<button onclick="devMode(false)" class="button-54" id="devModeOff-button" role="button">Dev-Mode ausschalten</button>
+		</div>
+		<br>
+	</form>
+	<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

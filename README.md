@@ -20,4 +20,6 @@ in etc/rc.local aufrufen /home/pi/BrachioGraph/start_flask.sh
 Software Einrichtung
 
 Lade die neuste Version vom Raspberry Pi Imager[https://www.raspberrypi.com/software/] auf deinen Computer.
-Wähle anschließend die Version ... trage in den Einstellungen dein Wifi-Namen und dein Wifi-Passwort ein und flashe sie auf die SD-Karte.
+Wähle anschließend die Version Raspberry Pi OS Lite (32-bit)
+In den Einstellungen setzt du den Hostname auf "plotter", aktivierst ssh und setzt ein Benutzernamen und ein Passwort und gibst schlussendlich den Namen und das Passwort deines Wifis unter "Wifi einrichten" ein. 
+Anschließend drückst du auf speichern und lässt das Ganze auf eine SD-Karte schreiben.

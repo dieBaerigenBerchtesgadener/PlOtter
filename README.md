@@ -157,7 +157,7 @@ A pen plotter based on brachiograph
             image_data_list.append(image_data)
 
         return jsonify({"image_data_list": image_data_list})
-       '''
+        '''
         from openai import OpenAI
 
         # Ersetze YOUR_API_KEY mit deinem OpenAI-API-Schlüssel

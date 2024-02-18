@@ -125,4 +125,4 @@ und fügen vor "exit 0" ein:
 9. Schlussendlich starten wir den RPI neu
    ```bash
    sudo reboot
-10. Um nun die Webseite zu öffnen gehen wir auf http://plotter
+10. Um nun die Webseite zu öffnen gehe auf http://plotter

@@ -44,4 +44,12 @@ python3 -m venv env
 source env/bin/activate
 
 Jetzt können wir die Pakete installieren:
+sudo apt-get install libopenblas-base
 pip install -r requirements.txt
+
+Um die Webseite automatisch zu starten öffnen wir die Datei rc.local:
+cd
+sudo nano /etc/rc.local
+
+und fügen vor "exit 0" ein:
+/home/pi/PlOtter/start_flask.sh

@@ -44,7 +44,8 @@ python3 -m venv env
 source env/bin/activate
 
 Jetzt können wir die Pakete installieren:
-sudo apt-get install libopenblas-base
+sudo apt install authbind
+sudo apt-get install libopenblas-dev
 pip install -r requirements.txt
 
 Um die Webseite automatisch zu starten öffnen wir die Datei rc.local:

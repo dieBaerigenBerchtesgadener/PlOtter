@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd home/pi/BrachioGraph
+cd home/pi/PlOtter
 source env/bin/activate
 authbind --deep python3 main.py
 

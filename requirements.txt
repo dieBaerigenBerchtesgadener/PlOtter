@@ -1,4 +1,4 @@
-numpy>=1.21.6
+numpy
 pigpio==1.78
 Pillow
 readchar==4.0.3

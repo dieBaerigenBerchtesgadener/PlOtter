@@ -38,6 +38,10 @@ git clone https://github.com/lidufhgosiuhfgkyfdjhpspdigh/PlOtter
 Jetzt müssen wir einige Pakete installieren, dafür benötigen wir zuerst pip:
 sudo apt install pip
 
-Jetzt können wir in das PlOtter Verzeichnis gehen und die Pakete installieren:
+Die Pakete wollen wir später in einer virtuellen Umgebung installieren:
 cd PlOtter
+python3 -m venv env
+source env/bin/activate
+
+Jetzt können wir die Pakete installieren:
 pip install -r requirements.txt

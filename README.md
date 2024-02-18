@@ -122,7 +122,7 @@ und fügen vor "exit 0" ein:
    /home/pi/PlOtter/start_flask.sh
    ```
    Das speichern wir anschließend mit Ctrl + X und C
-9. Schlussendlich starten wir den RPI neu
+9. Schlussendlich starten wir den Raspberry Pi neu
    ```bash
    sudo reboot
 10. Um nun die Webseite zu öffnen gehe auf http://plotter

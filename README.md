@@ -21,6 +21,8 @@ A pen plotter based on brachiograph
    
    ```bash
    ssh benutzername@plotter
+   ```
+   Wenn hier nichts gefunden wird, dann musst du ```plotter``` mit der IP-Adresse des Raspberry Pi ersetzen. Diese findest du mit einem IP-Scanner wie der App Fing oder anderem.
 3. Gib das zuvor vergebene Passwort ein
 
 ## Herunterladen der Dateien von GitHub und Installation der Pakete
@@ -73,4 +75,116 @@ A pen plotter based on brachiograph
 9. Schlussendlich wird der Raspberry Pi neugestartet:
    ```bash
    sudo reboot
-10. Um nun die Webseite zu öffnen gehe auf http://plotter 
+10. Um nun die Webseite zu öffnen gehe auf http://plotter bzw. http://deineIpAdresse
+
+
+## Stable Diffusion/OpenAI Token hinzufügen, um Bilder zu erstellen
+
+1. Hole den token für Stable Diffusion bzw OpenAI unter der jeweiligen Webseite
+2. Öffne ```main.py```:
+   
+   ```bash
+   sudo nano PlOtter/main.py
+3. Für Stable Diffusion:
+   
+   ```bash
+      headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer sk-yourapikey",
+      }
+
+   ```
+   
+   Für OpenAI musst du die Bibliothek von OpenAi installieren:
+   
+   ```bash
+   cd PlOtter
+   source env/bin/activate
+   pip install openai
+   ```
+   
+   Und den Teil von Stable Diffusion ausklammern und den OpenAI-Teil erscheinen lassen:
+   
+   ```bash
+    try:
+        '''
+        prompt = request.args.get('prompt')
+        if prompt is None:
+            return jsonify({"error": "Kein Prompt"}), 400
+
+        url = "https://api.stability.ai/v1/generation/stable-diffusion-xl-1024-v1-0/text-to-image"
+
+        body = {
+        "steps": 40,
+        "width": 1024,
+        "height": 1024,
+        "seed": 0,
+        "cfg_scale": 5,
+        "samples": 1,
+        "text_prompts": [
+            {
+            "text": prompt,
+            "weight": 1
+            },
+            {
+            "text": " ",
+            "weight": -1
+            }
+        ],
+        }
+
+        headers = {
+            "Accept": "application/json",
+            "Content-Type": "application/json",
+            "Authorization": "Bearer sk-yourapikey",
+        }
+
+        response = requests.post(
+            url,
+            headers=headers,
+            json=body,
+        )
+
+        if response.status_code != 200:
+            raise Exception("Non-200 response: " + str(response.text))
+
+        data = response.json()
+
+        image_data_list = []
+        for i, image in enumerate(data["artifacts"]):
+            image_data = image["base64"]
+            image_data_list.append(image_data)
+
+        return jsonify({"image_data_list": image_data_list})
+       '''
+        from openai import OpenAI
+
+        # Ersetze YOUR_API_KEY mit deinem OpenAI-API-Schlüssel
+        openai_client = OpenAI(api_key="sk-yourapikey")
+
+        prompt_text = request.args.get('prompt', 'default_prompt')
+
+        response = openai_client.images.generate(
+            model="dall-e-3",
+            prompt=prompt_text,
+            size="1024x1024",
+            quality="standard",
+            n=1,
+        )
+
+        image_url = response.data[0].url
+
+        # Lade das Bild herunter und speichere es lokal
+        image_response = requests.get(image_url)
+        image_data = base64.b64encode(image_response.content).decode('utf-8')
+
+        # Return the image URL and the base64-encoded image data
+        return jsonify({"image_data": image_data})
+   ```
+   
+   Anschließend musst du den API-Key einsetzen:
+   
+   ```bash
+   openai_client = OpenAI(api_key="sk-yourapikey")
+   ```

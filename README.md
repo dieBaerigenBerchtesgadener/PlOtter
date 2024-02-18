@@ -35,4 +35,9 @@ sudo apt install git
 Und können dan die Dateien herunterladen:
 git clone https://github.com/lidufhgosiuhfgkyfdjhpspdigh/PlOtter
 
+Jetzt müssen wir einige Pakete installieren, dafür benötigen wir zuerst pip:
+sudo apt install pip
 
+Jetzt können wir in das PlOtter Verzeichnis gehen und die Pakete installieren:
+cd PlOtter
+pip install -r requirements.txt

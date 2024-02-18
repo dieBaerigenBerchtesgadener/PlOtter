@@ -7,5 +7,3 @@ pytest==7.0.1
 tk==0.1.0
 flask
 requests
-sys
-signal

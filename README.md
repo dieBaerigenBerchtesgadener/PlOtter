@@ -59,18 +59,18 @@ A pen plotter based on brachiograph
    ```
    Wenn gefragt wird, ob du weitermachen willst ```Do you want to continue?``` bestätige immer mit ```y```
 
-7. Um die Webseite automatisch zu starten öffnen wir die Datei rc.local:
+7. Um die Webseite automatisch zu starten öffne die Datei rc.local:
    
    ```bash
    cd
    sudo nano /etc/rc.local
-8. Vor ```exit 0``` fügen wir folgendes ein:
+8. Und füge vor ```exit 0``` folgendes ein:
     
    ```bash
    sudo bash /home/pi/PlOtter/start_flask.sh
    ```
-   Das speichern wir anschließend mit Ctrl + X; y und der Eingabetaste
-9. Schlussendlich starten wir den Raspberry Pi neu
+   Speichere es anschließend mit Ctrl + X; y und der Eingabetaste
+9. Schlussendlich wird der Raspberry Pi neugestartet:
    ```bash
    sudo reboot
-10. Um nun die Webseite zu öffnen gehe auf http://plotter
+10. Um nun die Webseite zu öffnen gehe auf http://plotter 

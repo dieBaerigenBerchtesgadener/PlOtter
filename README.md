@@ -30,7 +30,8 @@ A pen plotter based on brachiograph
    ```bash
     sudo apt install git
     sudo apt install python3-pip
-Wenn gefragt wird, ob du weitermachen willst (Do you want to continue?) bestätige immer mit "y"
+   ```
+   Wenn gefragt wird, ob du weitermachen willst ```Do you want to continue?``` bestätige immer mit ```y```
 2. Klone das GitHub-Repository:
    
    ```bash
@@ -61,7 +62,7 @@ Wenn gefragt wird, ob du weitermachen willst (Do you want to continue?) bestäti
    ```bash
    cd
    sudo nano /etc/rc.local
-8. Vor "exit 0" fügen wir folgendes ein:
+8. Vor ```exit 0``` fügen wir folgendes ein:
     
    ```bash
    sudo bash /home/pi/PlOtter/start_flask.sh

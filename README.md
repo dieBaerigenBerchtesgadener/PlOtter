@@ -45,6 +45,8 @@ source env/bin/activate
 
 Jetzt können wir die Pakete installieren:
 sudo apt install authbind
+sudo touch /etc/authbind/byport/80
+sudo chmod 777 /etc/authbind/byport/80
 sudo apt-get install libopenblas-dev
 pip install -r requirements.txt
 

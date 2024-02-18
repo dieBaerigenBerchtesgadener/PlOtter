@@ -121,7 +121,7 @@ und fügen vor "exit 0" ein:
    ```bash
    /home/pi/PlOtter/start_flask.sh
    ```
-   Das speichern wir anschließend mit Ctrl + X und C
+   Das speichern wir anschließend mit Ctrl + X; y und der Eingabetaste
 9. Schlussendlich starten wir den Raspberry Pi neu
    ```bash
    sudo reboot

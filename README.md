@@ -56,6 +56,8 @@ A pen plotter based on brachiograph
    sudo chmod 777 /etc/authbind/byport/80
    sudo apt-get install libopenblas-dev
    pip install -r requirements.txt
+   ```
+   Wenn gefragt wird, ob du weitermachen willst ```Do you want to continue?``` bestätige immer mit ```y```
 
 7. Um die Webseite automatisch zu starten öffnen wir die Datei rc.local:
    

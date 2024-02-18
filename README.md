@@ -56,3 +56,5 @@ sudo nano /etc/rc.local
 
 und fügen vor "exit 0" ein:
 /home/pi/PlOtter/start_flask.sh
+
+

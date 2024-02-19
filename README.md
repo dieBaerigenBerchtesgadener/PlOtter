@@ -1,7 +1,7 @@
 # PlOtter
 Ein selbstmalender Bilderrahmen, der über eine intuitive Webseite gesteuert werden kann
-<div class="ishadow">
-  <img src="Github/photoPlOtter.jpg" width="300" height="300" style="box-shadow: 5px 5px 5px grey;">
+<div>
+  <img src="Github/photoPlOtter.png" width="500" height="500" style="box-shadow: 5px 5px 5px grey;">
 </div>
 
 # Materialien
@@ -207,3 +207,9 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
    ```bash
    openai_client = OpenAI(api_key="sk-yourapikey")
    ```
+# Erklärung
+Der PlOtter läuft auf einem Raspberry Pi Zero W mit dem hauseigenen Betriebssystem Raspberry Pi OS. Darauf läuft wiederum ein Flask-Webserver der eine in HTML, CSS und JavaScript geschriebene Webseite betreibt. Dieser ruft, sobald ein Bild gezeichnet werden soll, die notwendigen Funktionen des „BrachioGraph“ in Python auf. Die Webseite des PlOtters lässt sich sehr leicht mit http://plotter auf jedem beliebigen Gerät aufrufen, auf ihr kann man ein Bild einfügen, es auf der Zeichenebene ausrichten und anschließend mit verschiedenen Parametern in Linien umwandeln. Dafür bietet eine Vorschau die Möglichkeit, wenn nötig die Parameter Schraffur, Konturen und Rauschen nochmals zu verstellen, um ein besseres Ergebnis zu erhalten. Wenn dies zufriedenstellend ist, so kann man es mit einem Knopfdruck zum „Zeichnen“ an den PlOtter senden. Eine weitere Option bietet außerdem die Erstellung eines Bildes nach den eigenen Ideen. Hierfür muss nur die eigene Bildidee in Worte gefasst werden, woraufhin die Bilder mit der API von Stability AI und dem Bildmodel Stable Diffusion XL oder alternativ auch mit DALL·E 3 von OpenAI erzeugt werden. 
+
+# Danksagung
+Wir danken Tammo & Jürgen bei der Begleitung unseres Projekte.
+Außerdem den Projekten [BrachioGraph von evildmp](https://github.com/evildmp/BrachioGraph) und [plotterfun von mixtela](https://github.com/mitxela/plotterfun)

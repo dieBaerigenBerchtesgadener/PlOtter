@@ -4,7 +4,7 @@ Ein selbstmalender Bilderrahmen, der über eine intuitive Webseite gesteuert wer
   <img src="Github/photoPlOtter.png">
 </div>
 <div>
-  <img src="Github/Screenshots.png">
+  <img src="Github/screenshots.png">
 </div>
 # Materialien
 

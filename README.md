@@ -1,9 +1,11 @@
 # PlOtter
 Ein selbstmalender Bilderrahmen, der über eine intuitive Webseite gesteuert werden kann
 <div>
-  <img src="Github/photoPlOtter.png" width="500" height="500" style="box-shadow: 5px 5px 5px grey;">
+  <img src="Github/photoPlOtter.png">
 </div>
-
+<div>
+  <img src="Github/Screenshots.png">
+</div>
 # Materialien
 
 | Material                    | Preis   |

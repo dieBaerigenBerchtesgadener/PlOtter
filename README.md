@@ -1,5 +1,24 @@
 # PlOtter
-A pen plotter based on brachiograph
+Ein selbstmalender Bilderrahmen, der über eine intuitive Webseite gesteuert werden kann
+<div class="ishadow">
+  <img src="Github/photoPlOtter.jpg" width="300" height="300" style="box-shadow: 5px 5px 5px grey;">
+</div>
+
+# Materialien
+
+| Material                    | Preis   |
+|-----------------------------|---------|
+| Raspberry Pi Zero W        | ca. 15 € |
+| 10x Jumperkabel            | ca. 1 €  |
+| 3x Micro Servos SG90       | ca. 9 €  |
+| Bilderrahmen (je nach Typ) | ca. 15 € |
+| Holz (je nach Art, inkl. Wäscheklammer) | ca. 3 € |
+| **Gesamt**                  | **ca. 43 €** |
+
+Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt aber.
+
+# Zusammenbau
+
 
 # Software Einrichtung
 

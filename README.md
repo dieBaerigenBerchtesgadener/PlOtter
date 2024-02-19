@@ -1,5 +1,5 @@
 # PlOtter
-Ein selbstmalender Bilderrahmen, der über eine intuitive Webseite gesteuert werden kann
+Ein selbstmalender Bilderrahmen
 <div>
   <img src="Github/photoPlOtter.png">
 </div>

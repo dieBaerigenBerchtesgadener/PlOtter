@@ -14,7 +14,7 @@
 		<svg id="svg" style="display: none;"></svg>
 		<img id="image-preview" onclick="selectImage()" src="{{ url_for('static', filename='images/otter.gif') }}" alt="Bildvorschau">
 		<div class="wrapper">
-			<canvas id="canvas" width="500" height="300"></canvas>
+			<canvas id="canvas" width="1024" height="614"></canvas> <!-- bounds=(-8.5, 4, 4.5, 12); Seitenverhältnis = (4 - (-8.5)) / (12 - 4.5) ≈ 1.67-->
 			<div id="zoom-container" class="container" style="display: none;">
 				<button id="zoom-in" class="button-zoom">
 					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="button-zoom-icon">

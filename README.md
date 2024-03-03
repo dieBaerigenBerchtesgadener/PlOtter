@@ -180,20 +180,23 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
    ```
 10. Und öffnest die Datei:
     
-   ```bash
-   sudo nano custom.py
-   ```
+    ```bash
+    sudo nano custom.py
+    ```
 11. Änderst die Werte und speicherst sie mit ```STRG + X``` , ```Y``` und der Eingabetaste:
    
-   ```bash
-   bg = BrachioGraph(
-      #...
-      servo_1_parked_pw=1860,
-      servo_2_parked_pw=1720,
-      #...
-   )
-   ```
-
+    ```bash
+    bg = BrachioGraph(
+       #...
+       servo_1_parked_pw=1860,
+       servo_2_parked_pw=1720,
+       #...
+    )
+    ```
+12. Schlussendlich starten wir den RPI neu, um die Einstellungen zu aktivieren:
+   
+    ```bash
+    sudo reboot
 
 ## Stable Diffusion/OpenAI Token hinzufügen, um Bilder zu erstellen
 

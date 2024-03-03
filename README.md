@@ -173,24 +173,6 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
 </tbody>
 </table>
 
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr class="row-odd"><th class="stub"><p>Erfassungsimpulsbreitenwert</p></th>
-<td><code class="docutils literal notranslate">c</code></td>
-</tr>
-<tr class="row-even"><th class="stub"><p>Angezeigte erfasste Werte</p></th>
-<td><code class="docutils literal notranslate">v</code></td>
-</tr>
-<tr class="row-odd"><th class="stub"><p>Beenden</p></th>
-<td><code class="docutils literal notranslate">0</code></td>
-</tr>
-</tbody>
-</table>
-
 
 ## Stable Diffusion/OpenAI Token hinzufügen, um Bilder zu erstellen
 

@@ -124,8 +124,7 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
 7. Importiere die Bibliothek für den PlOtter:
  
    ```bash
-   from brachiograph import BrachioGraph
-   bg = BrachioGraph()
+   from custom import bg
 8. Führe folgenden Befehl aus, um die Motoren mit unteren Tastenbefehlen im 90° Winkel auszurichten:
 
    ```bash

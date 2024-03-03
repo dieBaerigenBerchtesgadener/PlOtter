@@ -183,7 +183,7 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
    ```bash
    sudo nano custom.py
    ```
-11. Änderst die Werte und speicherst sie mit ```STRG + X``` und ```C```:
+11. Änderst die Werte und speicherst sie mit ```STRG + X``` , ```Y``` und der Eingabetaste:
    
    ```bash
    bg = BrachioGraph(

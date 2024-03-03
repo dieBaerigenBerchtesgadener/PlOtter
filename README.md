@@ -126,7 +126,7 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
    ```bash
    from brachiograph import BrachioGraph
    bg = BrachioGraph()
-8. Führe folgenden Befehl aus, um die Motoren im 90° Winkel auszurichten:
+8. Führe folgenden Befehl aus, um die Motoren mit unteren Tastenbefehlen im 90° Winkel auszurichten:
 
    ```bash
    bg.capture_pws()
@@ -173,6 +173,24 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
 </tbody>
 </table>
 
+9. Mit der Taste ```0``` kannst du die Auswahl beenden, nun musst du die finalen Werte in der Datei custom.py speichern, dafür beendest du das Terminal:
+   
+   ```bash
+   exit()
+10. Und öffnest die Datei:
+    
+   ```bash
+   sudo nano custom.py
+
+11. Änderst die Werte und speicherst sie mit ```STRG + X``` und ```C```:
+   
+   ```bash
+    bg = BrachioGraph(
+      //...
+      servo_1_parked_pw=1860,
+      servo_2_parked_pw=1720,
+      //...
+    )
 
 ## Stable Diffusion/OpenAI Token hinzufügen, um Bilder zu erstellen
 

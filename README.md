@@ -90,7 +90,7 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
    ```bash
    sudo bash /home/pi/PlOtter/start_flask.sh
    ```
-   Speichere es anschließend mit Ctrl + X; y und der Eingabetaste
+   Speichere es anschließend mit ```STRG + X``` , ```Y``` und der Eingabetaste:
 9. Schlussendlich wird der Raspberry Pi neugestartet:
    ```bash
    sudo reboot

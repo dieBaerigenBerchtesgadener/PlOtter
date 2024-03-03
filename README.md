@@ -59,7 +59,7 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 2. Klone das GitHub-Repository:
    
    ```bash
-   git clone https://github.com/lidufhgosiuhfgkyfdjhpspdigh/PlOtter
+   git clone https://github.com/dieBaerigenBerchtesgadener/PlOtter
 3. Navigiere zum Projektverzeichnis:
    
    ```bash

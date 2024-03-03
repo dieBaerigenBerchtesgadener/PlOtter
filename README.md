@@ -97,7 +97,100 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 10. Um nun die Webseite zu öffnen gehe auf http://plotter bzw. http://deineIpAdresse
 
 ## Kalibrierung
-Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrieren.
+Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrieren, dabei ist das Ziel die Arme in einem 90° Winkel auszurichten.
+1. Öffne das Terminal auf deinem Computer und führe folgenden Befehl aus, um eine SSH-Verbindung herzustellen:
+   
+   ```bash
+   ssh benutzername@plotter
+   ```
+   Wenn hier nichts gefunden wird, dann musst du ```plotter``` mit der IP-Adresse des Raspberry Pi ersetzen. Diese findest du mit einem IP-Scanner wie der App Fing oder anderem.
+2. Gib das zuvor vergebene Passwort ein
+3. Starte pigpiod, um die Motoren steuern zu können:
+
+   ```bash
+   sudo pigpiod
+4. Navigiere zum Projektverzeichnis:
+   
+   ```bash
+   cd PlOtter
+5. Aktiviere die virtuelle Umgebung:
+   
+   ```bash
+   source env/bin/activate
+6. Öffne das Python terminal:
+   
+   ```bash
+   python
+7. Importiere die Bibliothek für den PlOtter:
+ 
+   ```bash
+   from brachiograph import BrachioGraph
+   bg = BrachioGraph()
+8. Führe folgenden Befehl aus, um die Motoren im 90° Winkel auszurichten:
+
+   ```bash
+   bg.capture_pws()
+   
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+<col style="width: 20%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"></th>
+<td>-10 µs</td>
+<td>-1 µs</td>
+<td>+ 10 µs</td>
+<td>+ 1 µs</td>
+</tr>
+<tr class="row-even"><th class="stub"></th>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Schulter</p></th>
+<td><code class="docutils literal notranslate">a</code></td>
+<td><code class="docutils literal notranslate">A</code></td>
+<td><code class="docutils literal notranslate">s</code></td>
+<td><code class="docutils literal notranslate">S</code></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Ellenbogen</p></th>
+<td><code class="docutils literal notranslate">k</code></td>
+<td><code class="docutils literal notranslate">K</code></td>
+<td><code class="docutils literal notranslate">l</code></td>
+<td><code class="docutils literal notranslate">L</code></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Stift</p></th>
+<td><code class="docutils literal notranslate">z</code></td>
+<td></td>
+<td><code class="docutils literal notranslate">x</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><th class="stub"><p>Erfassungsimpulsbreitenwert</p></th>
+<td><code class="docutils literal notranslate">c</code></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>Angezeigte erfasste Werte</p></th>
+<td><code class="docutils literal notranslate">v</code></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>Beenden</p></th>
+<td><code class="docutils literal notranslate">0</code></td>
+</tr>
+</tbody>
+</table>
+
 
 ## Stable Diffusion/OpenAI Token hinzufügen, um Bilder zu erstellen
 

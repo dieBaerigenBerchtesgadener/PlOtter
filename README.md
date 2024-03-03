@@ -22,6 +22,11 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 
 # Zusammenbau
 
+## Schaltplan
+<div>
+  <img src="Github/circuitDiagram.png">
+</div>
+<b>Hinweis</b>: Die bunten Kabel sind für die Signale, die schwarzen sind für GND und die roten sind für 5V. Leider gibt es dabei nicht drei 5V Anschlüsse am RPI, deswegen müssen die drei zu einem verbunden und an den RPI angeschlossen werden.
 
 # Software Einrichtung
 

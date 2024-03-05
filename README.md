@@ -310,6 +310,8 @@ Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrie
 
 # Zusammenbau
 
+
+
 ## Schaltplan
 <div>
   <img src="Github/circuitDiagram.png">

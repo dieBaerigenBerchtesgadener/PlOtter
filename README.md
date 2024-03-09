@@ -97,7 +97,9 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 10. Um nun die Webseite zu öffnen gehe auf http://plotter bzw. http://deineIpAdresse
 
 # Zusammenbau
+
 ## Konstruktion
+Die Holzelemente können, falls möglich, mit einem Lasercutter (siehe PlOtterLasercutter.cad) oder alternativ mit einer Papiervorlage ausgeschnitten werden.
 <div>
   <img src="Github/circuitDiagram.png">
 </div>

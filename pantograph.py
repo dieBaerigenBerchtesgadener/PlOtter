@@ -8,7 +8,7 @@ import numpy
 import json
 import pigpio
 from plotter import Plotter, Pen
-
+ 
 
 def hypotenuse(side1, side2):
     return sqrt(side1**2 + side2**2)

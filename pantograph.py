@@ -17,7 +17,9 @@ def hypotenuse(side1, side2):
 class PantoGraph(Plotter):
     """A drawing robot with a pantograph design."""
 
-    def __init__(
+ ich habe ein lokales repository das von meinem öffentlichen repository geclont hat nun will ich die veränderungen aus dem lokalen mit dem öffentlichen auf github synchronisieren
+
+Quellen   def __init__(
         self,
         #  ----------------- geometry of the plotter -----------------
         driver=8,  # the lengths of the arms

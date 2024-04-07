@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>PlOtter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+</head>
+<body>
+	<div class="container">
+	<h1>PlOtter</h1>
+	<!--<img src="{{ url_for('static', filename='images/logo.png') }}" alt="Logo" style="width: 10%; height: 10%; margin-left: 10px;"> -->
+	</div>
+	<form id="upload-form" method="post" enctype="multipart/form-data">		
+		<svg id="svg" style="display: none;"></svg>
+		<img id="image-preview" src="{{ url_for('static', filename='images/otter.gif') }}" alt="Bildvorschau">
+		<div id="edit-container" class="wrapper">
+			<div id="detectOnClick"> 
+				<canvas id="canvas" width="1024" height="614"></canvas> <!-- bounds=(-8.5, 4, 4.5, 12); Seitenverhältnis = (4 - (-8.5)) / (12 - 4.5) ≈ 1.67-->
+				<span id="click-point"></span>
+			</div>
+			<div id="round-button-container" class="container" style="display: none;">
+				<button id="zoom-out" class="round-button">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="round-button-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/zoom-out.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+				<button id="zoom-in" class="round-button">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="round-button-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/zoom-in.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+				<button id="rotate" class="round-button">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="round-button-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/rotate.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+				<button id="removeBackground" class="round-button">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="round-button-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/background_replace.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+				<button id="cropButton" class="round-button" style="display: none;">
+					<svg xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="56.6934px" viewBox="0 0 56.6934 56.6934" version="1.1" style="enable-background:new 0 0 56.6934 56.6934;" id="Layer_1" height="56.6934px" class="round-button-icon">
+						<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+						<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+						<g id="SVGRepo_iconCarrier">
+							<image href="{{ url_for('static', filename='images/done.svg') }}" width="100%" height="100%" />
+						</g>
+					</svg>
+				</button>
+			</div>
+		</div>
+		<br>
+		<div class="input-container" id="input-container-ai" style="display: none;">
+			<canvas id="sketchCanvas" width="512" height="512" style="display: block;"></canvas>
+			<br>
+			<textarea id="input-ai" name="text" class="input" placeholder="Stell dir etwas vor..." rows="1"></textarea>
+			<span class="icon"> 
+				<svg id="svgAI" width="25px" height="25px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+					<g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+					<g id="SVGRepo_iconCarrier">
+						<image href="{{ url_for('static', filename='images/send-rounded-outlined.svg') }}" width="100%" height="100%" />
+					</g>
+				</svg>
+			</span>		
+		</div>
+		<br>
+		<div class="button-container">
+			<button type="button" class="button-54" id="upload-button" role="button">Bild hochladen</button>
+			<button type="button" class="button-54" id="ai-button" role="button">KI-Bild</button>
+		</div>
+		<br></br>
+		<div class="container">
+			<div style="font-weight: bold; font-size: 17px; bottom: 5px; position: relative;" class="text">Modifikationen</div>
+		</div>
+		<div class="container" style="margin-top: -10px;">
+			<div id="konturen-container" class="container">
+				<label for="konturen-range" style="width: 96px;">Konturen:</label>
+				<input type="range" min="1" max="16" value="8" class="slider" id="konturen-range">
+				<span id="konturen-display" style="width: 14px;">8</span> <br> <br>
+			</div>
+			<label id="checkboxKonturenContainer" class="container">
+				<input id="checkboxKonturen" checked="checked" type="checkbox">
+				<div class="checkmark" style="margin-left: 10px;"></div> 
+			</label>
+		</div>
+		<div class="container">
+			<br>
+			<div id="schraffur-container" class="container">
+				<label for="schraffur-range" style="width: 96px;">Schraffur:</label>
+				<input type="range" min="1" max="24" value="8" class="slider" id="schraffur-range">
+				<span id="schraffur-display" style="width: 14px;">8</span> 
+				<label id="checkboxSchraffurContainer" class="container">
+					<input id="checkboxSchraffur" checked="checked" type="checkbox">
+					<div class="checkmark" style="margin-left: 10px;"></div>
+				</label>
+			</div>
+		</div>
+		<div class="container">
+			<div id="noise-container" class="container">
+				<label for="noise-range" style="width: 96px;">Rauschen:</label>
+				<input type="range" min="0" max="2" step="0.1" value="1" class="slider" id="noise-range">
+				<span id="noise-display">1</span><br><br>
+			</div>
+		</div>
+		<div class="container">
+			<div id="inverted-container" class="container" style="opacity: 0.5;">
+				<label for="inverted" style="width: 96px;">Invertiert:</label>
+			<label id="checkboxInvertedContainer" class="container">
+				<input id="checkboxInverted" type="checkbox">
+				<div class="checkmark" style="margin-left: 160px; margin-top: -10px;"></div> 
+			</label>
+			</div>
+		</div>
+		<br>
+		<div class="container">
+			<div style="font-weight: bold; font-size: 17px; bottom: 5px; position: relative;" class="text">Stiftdicke</div>
+		</div>
+		<div class="radio-wrapper">
+			<div class="option">
+			  <input class="input" type="radio" name="btn" value="weak" id="weakOption">
+			  <div class="btn">
+				<span class="span">Schwach</span>
+			  </div>
+			</div>
+			<div class="option">
+			  <input class="input" type="radio" name="btn" value="middle" id="middleOption" checked="">
+			  <div class="btn">
+				<span class="span">Mittel</span>
+			  </div>
+			</div>
+			<div class="option">
+			  <input class="input" type="radio" name="btn" value="strong" id="strongOption">
+			  <div class="btn">
+				<span class="span">Stark</span>
+			  </div>
+			</div>
+		</div>	
+		<br>
+		<div style="display: flex;">
+			<button type="button" class="button-54" id="convert-button" role="button" style="display: none; margin-right: 10px;">Umwandeln</button>
+			<button type="button" class="button-54" id="reset-button" role="button" style="display: none;">Zurücksetzen</button>
+		</div>
+		<br><br><br>
+		<div class="container" id="containerButton">
+		<button class="centered-button" style="display: none;" id="print-button"><span>Drucken</span></button>
+		</div>
+		<div class="container" id="dev-container" style="display: none;">
+			<div class="container">
+				<div style="font-weight: bold; font-size: 17px; bottom: 5px; position: relative;" class="text">Dev-Settings</div>
+			</div>
+			<div>
+				<div class="flex-container">
+					<label>Log:</label>
+					<style>
+						.white-text {
+							color: white;
+							background-color: black;
+						}
+						.flex-container {
+							display: flex;
+							align-items: center;
+						}
+					</style>
+					<div id="msgbox" class="white-text"></div>
+				</div>
+			</div><br>
+			<label>Druck</label><br>
+			<div class="button-container">
+				<button class="button-54" id="stop-button" role="button">Stoppen</button>
+				<button class="button-54" id="pausePlay-button" role="button">Pausieren/Weitermachen</button>
+			</div><br>
+			<label>Server</label><br>
+			<div class="button-container">
+				<button class="button-54" id="shutdownServer-button" role="button">Herunterfahren</button>
+				<button class="button-54" id="rebootServer-button" role="button">Neustarten</button>
+			</div><br>
+			<label>PlOtter</label><br>
+			<div class="button-container">
+				<button class="button-54" id="shutdown-button" role="button" style="background-color: lightcoral;">Herunterfahren</button>
+				<button class="button-54" id="reboot-button" role="button" style="background-color: lightcoral;">Neustarten</button>
+			</div><br><br>
+			<button class="button-54" id="download-button" role="button">Download Json</button>
+			<button class="button-54" id="devModeOff-button" role="button">Dev-Mode ausschalten</button>
+		</div>
+		<br>
+	</form>
+	<script type="module" src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+

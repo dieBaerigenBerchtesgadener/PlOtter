@@ -148,7 +148,19 @@ function connectdotsH(dots){
 
 function getContours( getPixel, strokeScale ){
   postMessage(['msg', "Edge finding"]);
-  let edges = SobelFilter( getPixel );
+
+  // Beschneide das Bild um einen kleinen Rand
+  const margin = 1; // Anpassen nach Bedarf
+  const croppedWidth = config.width - 2 * margin;
+  const croppedHeight = config.height - 2 * margin;
+  const croppedGetPixel = (x, y) => {
+    if (x < 0 || x >= croppedWidth || y < 0 || y >= croppedHeight) {
+      return 255; // Weiße Farbe für Pixel außerhalb des beschnittenen Bereichs
+    }
+    return getPixel(x + margin, y + margin);
+  };
+
+  let edges = SobelFilter(croppedGetPixel);
   postMessage(['msg', "Tracing contours (1/3)"]);
   let contoursH = connectdotsH(getdotsH(edges))
   postMessage(['msg', "Tracing contours (2/3)"]);
@@ -180,10 +192,17 @@ function getContours( getPixel, strokeScale ){
     if (s.length) nc.push(s)
   }
 
+  // Verschiebe die Konturen um den Rand nach innen
+  for (let i in nc) {
+    for (let j in nc[i]) {
+      nc[i][j][0] += margin;
+      nc[i][j][1] += margin;
+    }
+  }
+
   addNoise(nc, 10)
 
   return nc
-
 }
 
 

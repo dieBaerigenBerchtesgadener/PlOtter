@@ -592,6 +592,7 @@ function loadWorker(){
       // Parse the JSON string and store the data
       window.data = JSON.parse(data)
     } else if (type == 'lines') {
+      lines = []; // Empty the lines array
       lines.push(data); // Push lines into the global variable
     }
   }

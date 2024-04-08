@@ -166,6 +166,17 @@ checkboxInverted.addEventListener("change", function() {
   }
 });
 
+removeBackground.addEventListener('click', function() {
+  removeBackgroundValue = !removeBackgroundValue;
+  if (removeBackgroundValue) {
+    removeBackground.style.boxShadow = "0px 0px var(--main-color)";
+    removeBackground.style.transform = "translate(3px, 3px)";
+  } else {
+    removeBackground.style.boxShadow = "";
+    removeBackground.style.transform = "";
+  }
+});
+
 
 if (!window.config['Contour detail']) {
   window.config['Contour detail'] = 2;
@@ -376,42 +387,17 @@ function handleImage(img) {
     // Speichere den aktuellen Zustand des Kontexts
     ctx.save();
   
-    // Verschiebe den Ursprung zur Mitte des Canvas
-    ctx.translate(cw / 2, ch / 2);
+    // Verschiebe den Ursprung zur Mitte des Bildes
+    ctx.translate(offsetX + scaledW / 2, offsetY + scaledH / 2);
   
     // Drehe den Kontext um den aktuellen Drehwinkel
     ctx.rotate(rotation * Math.PI / 180);
   
-    // Berechne die Breite und Höhe des gedrehten Bildes
-    let rotatedWidth = scaledW;
-    let rotatedHeight = scaledH;
-    if (rotation % 180 !== 0) {
-      rotatedWidth = scaledH;
-      rotatedHeight = scaledW;
-    }
-  
-    // Berechne den Offset, um das gedrehte Bild zu zentrieren
-    let offsetX = -rotatedWidth / 2;
-    let offsetY = -rotatedHeight / 2;
-  
-    // Zeichne das Bild mit dem berechneten Offset
-    ctx.drawImage(img, offsetX, offsetY, rotatedWidth, rotatedHeight);
+    // Zeichne das Bild mit dem Offset, um es um den Mittelpunkt zu drehen
+    ctx.drawImage(img, -scaledW / 2, -scaledH / 2, scaledW, scaledH);
   
     // Stelle den vorherigen Zustand des Kontexts wieder her
     ctx.restore();
-  });
-  
-
-
-  removeBackground.addEventListener('click', function() {
-    removeBackgroundValue = !removeBackgroundValue;
-    if (removeBackgroundValue) {
-      removeBackground.style.boxShadow = "0px 0px var(--main-color)";
-      removeBackground.style.transform = "translate(3px, 3px)";
-    } else {
-      removeBackground.style.boxShadow = "";
-      removeBackground.style.transform = "";
-    }
   });
 
   /*
@@ -536,8 +522,8 @@ function handleImage(img) {
             ctx.fillRect(x, y, 1, 1);
         }
     });
-    var dataURL = canvas.toDataURL();
-    img.src = dataURL;
+    //var dataURL = canvas.toDataURL();
+    //img.src = dataURL;
   }
 }
 

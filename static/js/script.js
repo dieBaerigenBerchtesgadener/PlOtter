@@ -455,10 +455,10 @@ function handleImage(img) {
         drawSegmentation(result.categoryMask);
         drawClickPoint(event);
         console.log("Clicked position:", event.offsetX, event.offsetY);
-        cropButton.style.display = "block";
+        cropButton.style.visibility = "visible";
         cropButton.addEventListener("click", () => {
             cutSegmentation(result.categoryMask);
-            cropButton.style.display = "none";
+            cropButton.style.visibility = "hidden";
             clickPoint.style.display = "none";
             removeBackgroundValue = false;
             removeBackground.style.boxShadow = "";
@@ -720,34 +720,38 @@ function selectAi() {
   sketchCanvas.addEventListener('touchcancel', stopDrawing);  
 
   function startDrawing(e) {
-      isDrawing = true;
-      withDrawing = true;
-      draw(e);
+    e.preventDefault();
+    isDrawing = true;
+    withDrawing = true;
+    draw(e);
   }
 
   function draw(e) {
-      if (!isDrawing) return;
-      e.preventDefault(); 
-      
-      const rect = sketchCanvas.getBoundingClientRect();
-      let x, y;
-      if (e.type === 'mousemove') {
-        x = e.clientX - rect.left;
-        y = e.clientY - rect.top;
-      } else if (e.type === 'touchmove') {
-        x = e.touches[0].clientX - rect.left;
-        y = e.touches[0].clientY - rect.top;
-      }
-      
-      sketchCtx.lineTo(x, y);
-      sketchCtx.stroke();
-      sketchCtx.beginPath();
-      sketchCtx.moveTo(x, y);
+    if (!isDrawing) return;
+    e.preventDefault();
+
+    const rect = sketchCanvas.getBoundingClientRect();
+    const scaleX = sketchCanvas.width / sketchCanvas.clientWidth;
+    const scaleY = sketchCanvas.height / sketchCanvas.clientHeight;
+
+    let x, y;
+    if (e.type === 'mousemove') {
+      x = (e.clientX - rect.left) * scaleX;
+      y = (e.clientY - rect.top) * scaleY;
+    } else if (e.type === 'touchmove') {
+      x = (e.touches[0].clientX - rect.left) * scaleX;
+      y = (e.touches[0].clientY - rect.top) * scaleY;
+    }
+
+    sketchCtx.lineTo(x, y);
+    sketchCtx.stroke();
+    sketchCtx.beginPath();
+    sketchCtx.moveTo(x, y);
   }
 
   function stopDrawing() {
-      isDrawing = false;
-      sketchCtx.beginPath();
+    isDrawing = false;
+    sketchCtx.beginPath();
   }
 }
 

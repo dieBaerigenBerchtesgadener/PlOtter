@@ -22,9 +22,7 @@ def index():
 
 @app.route('/printImage', methods=['POST'])
 def printImage():
-    global executing
     try:
-        executing = True
         data = request.json
         lines = data['lines']
         lines = lines[0]
@@ -32,10 +30,8 @@ def printImage():
         bg.quiet(servos=[14, 15, 18]) #Stimmen die Servo-Nummern?
         result = "Bild ist fertig"
         print(result)
-        executing = False
         return result
     except Exception as e:
-        executing = False
         return str(e)
 
 @app.route('/stopPrinting', methods=['POST'])

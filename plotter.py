@@ -194,7 +194,7 @@ class Plotter:
 
         self.plot_lines(lines, bounds, angular_step, wait, resolution, flip=True)
 
-    def plot_lines(
+    def plot_lines( 
         self,
         lines=[],
         bounds=None,
@@ -205,15 +205,12 @@ class Plotter:
         rotate=False,
     ):
         """Passes each segment of each line in lines to ``draw_line()``"""
-        global executing
 
         bounds = bounds or self.bounds
 
         lines = self.rotate_and_scale_lines(lines=lines, bounds=bounds, flip=True)
 
         for line in tqdm.tqdm(lines, desc="Lines", leave=False):
-            if not executing:  # Prüfen, ob executing noch True ist
-                break  # Wenn nicht, Schleife abbrechen
             x, y = line[0]
 
             # only if we are not within 1mm of the start of the line, lift pen and go there
@@ -221,8 +218,6 @@ class Plotter:
                 self.xy(x, y, angular_step, wait, resolution)
 
             for point in line[1:]:
-                if not executing:  # Prüfen, ob executing noch True ist
-                    break  # Wenn nicht, Schleife abbrechen
                 x, y = point
                 self.xy(x, y, angular_step, wait, resolution, draw=True)
 

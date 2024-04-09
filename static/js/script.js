@@ -232,7 +232,7 @@ function selectImage() {
   d.onchange = function(e) {
     let img = new Image();
     img.onload = function() {
-      handleImage(img); 
+      handleImage(img);
     };
     img.src = URL.createObjectURL(e.target.files[0]);
   }
@@ -431,9 +431,7 @@ function handleImage(img) {
 
 
   // Blende das image-preview Element aus und zeige das canvas Element an
-  //if (!isMobileDevice()) {
-    roundButtonContainer.style.display = 'block';
-  //}
+  roundButtonContainer.style.display = 'block';
   imagePreview.style.display = 'none';
   convertButton.style.display = 'block';
   canvas.style.display = 'block';
@@ -445,25 +443,40 @@ function handleImage(img) {
       alert("InteractiveSegmenter still loading. Try again shortly.");
       return;
     }
-    console.log("Clicked position 1:", event.offsetX, event.offsetY);
+  
+    let rect = event.target.getBoundingClientRect();
+    let offsetX, offsetY;
+  
+    if (event.type === 'touchstart' || event.type === 'touchmove') {
+      offsetX = event.touches[0].clientX - rect.left;
+      offsetY = event.touches[0].clientY - rect.top;
+    } else {
+      offsetX = event.offsetX;
+      offsetY = event.offsetY;
+    }
+  
+    offsetX *= event.target.width / rect.width;
+    offsetY *= event.target.height / rect.height;
+  
+    console.log("Clicked position 1:", offsetX, offsetY);
     interactiveSegmenter.segment(event.target, {
-          keypoint: {
-              x: event.offsetX / event.target.width,
-              y: event.offsetY / event.target.height
-          }
+      keypoint: {
+        x: offsetX / event.target.width,
+        y: offsetY / event.target.height
+      }
     }, (result) => {
-        drawSegmentation(result.categoryMask);
-        drawClickPoint(event);
-        console.log("Clicked position:", event.offsetX, event.offsetY);
-        cropButton.style.visibility = "visible";
-        cropButton.addEventListener("click", () => {
-            cutSegmentation(result.categoryMask);
-            cropButton.style.visibility = "hidden";
-            clickPoint.style.display = "none";
-            removeBackgroundValue = false;
-            removeBackground.style.boxShadow = "";
-            removeBackground.style.transform = "";
-        });
+      drawSegmentation(result.categoryMask);
+      drawClickPoint(event);
+      console.log("Clicked position:", offsetX, offsetY);
+      cropButton.style.visibility = "visible";
+      cropButton.addEventListener("click", () => {
+        cutSegmentation(result.categoryMask);
+        cropButton.style.visibility = "hidden";
+        clickPoint.style.display = "none";
+        removeBackgroundValue = false;
+        removeBackground.style.boxShadow = "";
+        removeBackground.style.transform = "";
+      });
     });
   }
 
@@ -499,6 +512,7 @@ function handleImage(img) {
     clickPoint.style.left = `${event.offsetX - 8}px`;
     clickPoint.style.display = "block";
   }
+
 
   /**
   * Cut out everything outside the mask
@@ -801,17 +815,6 @@ async function generateAi() {
         })
       });
       const data = await response.json();
-      
-      
-      /*
-      const response = await fetch(`/generate_ai?prompt=${encodeURIComponent(prompt)}`, {
-          method: 'GET',
-          headers: {
-              'Content-Type': 'application/json',
-          },
-      });
-      const data = await response.json();
-      */
      
       if (response.ok) {
           const imageDatas = data.image_data_list;

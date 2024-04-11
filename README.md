@@ -98,7 +98,7 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 
 # Zusammenbau
 Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercutterGross.cdr bzw. PlOtterLasercutterKlein.cdr) oder alternativ kann der Plan auch maßstabsgetreu in DIN A4 ausgedruckt werden (PlOtterLasercutterGross.pdf) und anschließend mit der Hand aus einer 3mm dicken Holzplatte ausgeschnitten werden.
-<div>
+<div style="display: flex;">
   <img src="Github/uebersicht.png">
 </div>
 
@@ -112,21 +112,21 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 
 2. Um den Oberarm zu konstruieren sollten mit einem Abstand von exakt 8 cm zwei Löcher gebohrt werden. Anschließend sollten an beiden Löchern die entsprechenden Motorteile festgeklebt werden.
    
-<div>
+<div style="display: flex;">
   <img src="Github/oberarm.png">
 </div>
 
 
 3. Zur Konstruktion des Unterarms sollten die Motoren direkt mit den Holzelementen verklebt werden.
    
-<div>
+<div style="display: flex;">
   <img src="Github/unterarm.png">
 </div>
 
 
 4. Der fertige PlOtter sollte anschließend wie folgt aussehen.
    
-<div>
+<div style="display: flex;">
   <img src="Github/fertig.png">
 </div> 
 

@@ -103,9 +103,9 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 </div>
 
 1. Zusammenbau des Schultermotors
-<div>
-  <img src="Github/schulter1.png">
-  <img src="Github/schulter2.png">
+<div style="display: flex;">
+  <img src="Github/schulter1.png" width="50%" />
+  <img src="Github/schulter2.png" width="50%" />
 </div>
 
 2. 

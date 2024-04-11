@@ -97,7 +97,7 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 10. Um nun die Webseite zu öffnen gehe auf http://plotter bzw. http://deineIpAdresse
 
 # Zusammenbau
-Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercutterGross.cdr bzw. PlOtterLasercutterKlein.cdr) oder alternativ kann der Plan auch maßstabsgetreu in DIN A4 ausgedruckt werden (PlOtterLasercutterGross.pdf) und anschließend mit der Hand aus einer 3mm dicken Holzplatte ausgeschnitten werden.
+Zur Herstellung der Teile kann ein Lasercutter verwendet werden ([PlOtterLasercutterGross.cdr]([https://pages.github.com/](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.cdr)) bzw. [PlOtterLasercutterKlein.cdr]([https://pages.github.com/](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterKlein.cdr)) oder alternativ kann der Plan auch maßstabsgetreu in DIN A4 ausgedruckt werden ([PlOtterLasercutterGross.pdf](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.pdf)) und anschließend mit der Hand aus einer 3mm dicken Holzplatte ausgeschnitten werden.
 
 
 <div style="display: flex;">
@@ -122,7 +122,9 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 
 
 
-3. Zur Konstruktion des Unterarms sollten die Motoren direkt mit den Holzelementen verklebt werden.
+3. Zur Konstruktion des Unterarms sollten die Motoren direkt mit den Holzelementen verklebt werden. Die Wäscheklammer sollte so festgeklebt werden, dass ein Stift in ihr genau 8 cm Abstand zur Mittelpunkt der Schraube des zweiten Motors hat.
+
+**Wichtig!** Der Oberarm sollte erst nach dem erstmaligen Start des PlOtters mit den Motoren verbunden werden, sodass dieser in einem 90°-Winkel steht.
 
 
 <div style="display: flex;">
@@ -134,7 +136,7 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 4. Der fertige PlOtter sollte anschließend wie folgt aussehen.
    
 <div style="display: flex;">
-  <img src="Github/fertig.png">
+  <img src="Github/fertig.jpg">
 </div> 
 
 ## Schaltplan
@@ -142,7 +144,6 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
   <img src="Github/circuitDiagram.png">
 </div>
 <b>Hinweis</b>: Die bunten Kabel sind für die Signale, die schwarzen sind für GND und die roten sind für 5V. Leider gibt es dabei nicht drei 5V Anschlüsse am RPI, deswegen müssen die drei zu einem verbunden und an den RPI angeschlossen werden.
-
 
 ## Kalibrierung
 Um die Ergebnisse zu verbessern, lässt sich der RPI außerdem noch nachkalibrieren, dabei ist das Ziel die Arme in einem 90° Winkel auszurichten.

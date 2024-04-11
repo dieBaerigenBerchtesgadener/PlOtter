@@ -97,7 +97,7 @@ Andere Raspberry Pis werden auch unterstützt, der Raspberry Pi Zero genügt abe
 10. Um nun die Webseite zu öffnen gehe auf http://plotter bzw. http://deineIpAdresse
 
 # Zusammenbau
-Zur Herstellung der Teile kann ein Lasercutter verwendet werden ([PlOtterLasercutterGross.cdr]([https://pages.github.com/](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.cdr)) bzw. [PlOtterLasercutterKlein.cdr]([https://pages.github.com/](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterKlein.cdr)) oder alternativ kann der Plan auch maßstabsgetreu in DIN A4 ausgedruckt werden ([PlOtterLasercutterGross.pdf](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.pdf)) und anschließend mit der Hand aus einer 3mm dicken Holzplatte ausgeschnitten werden.
+Zur Herstellung der Teile kann ein Lasercutter verwendet werden ([PlOtterLasercutterGross.cdr](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.cdr) bzw. [PlOtterLasercutterKlein.cdr](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterKlein.cdr)) oder alternativ kann der Plan auch maßstabsgetreu in DIN A4 ausgedruckt werden ([PlOtterLasercutterGross.pdf](https://github.com/dieBaerigenBerchtesgadener/PlOtter/blob/main/PlOtterLasercutterGross.pdf)) und anschließend mit der Hand aus einer 3mm dicken Holzplatte ausgeschnitten werden.
 
 
 <div style="display: flex;">

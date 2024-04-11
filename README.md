@@ -103,6 +103,7 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 </div>
 
 1. Für den Schultermotor müssen die vier bzw. fünf Holzstücke nur ineinander und anschließend in die Bodenplatte gesteckt werden. Der größere Motor sollte dabei nicht wie der kleinere geklebt sondern mit zwei Schrauben und Muttern befestigt werden.
+   
 <div style="display: flex;">
   <img src="Github/schulter1.png" width="50%" />
   <img src="Github/schulter2.png" width="50%" />
@@ -110,15 +111,24 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 
 
 2. Um den Oberarm zu konstruieren sollten mit einem Abstand von exakt 8 cm zwei Löcher gebohrt werden. Anschließend sollten an beiden Löchern die entsprechenden Motorteile festgeklebt werden.
+   
 <div>
   <img src="Github/oberarm.png">
 </div>
 
+
 3. Zur Konstruktion des Unterarms sollten die Motoren direkt mit den Holzelementen verklebt werden.
+   
 <div>
   <img src="Github/unterarm.png">
 </div>
 
+
+4. Der fertige PlOtter sollte anschließend wie folgt aussehen.
+   
+<div>
+  <img src="Github/fertig.png">
+</div> 
 
 ## Schaltplan
 <div>

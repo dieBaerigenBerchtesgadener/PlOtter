@@ -109,8 +109,16 @@ Zur Herstellung der Teile kann ein Lasercutter verwendet werden (PlOtterLasercut
 </div>
 
 
-2. Um das Verbindungsstück zu konstruieren sollten mit einem Abstand von exakt 8 cm zwei Löcher gebohrt werden. Anschließend sollten an beiden Löchern die entsprechenden Motorteile festgeklebt werden.
-   
+2. Um den Oberarm zu konstruieren sollten mit einem Abstand von exakt 8 cm zwei Löcher gebohrt werden. Anschließend sollten an beiden Löchern die entsprechenden Motorteile festgeklebt werden.
+<div>
+  <img src="Github/oberarm.png">
+</div>
+
+3. Zur Konstruktion des Unterarms sollten die Motoren direkt mit den Holzelementen verklebt werden.
+<div>
+  <img src="Github/unterarm.png">
+</div>
+
 
 ## Schaltplan
 <div>
